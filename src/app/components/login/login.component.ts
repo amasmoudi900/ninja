@@ -38,10 +38,6 @@ export class LoginComponent implements OnInit {
           }
         } else {
           this.msgError = 'Please check your email/pwd';
-
-          // document.getElementById('emailError').innerHTML = 
-          // "Please check your email/pwd";
-          // document.getElementById('emailError').style.color = 'red';
         }
       }
     );
