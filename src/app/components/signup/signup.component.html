@@ -1,0 +1,64 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9 mx-auto text-center">
+                <h1 class="text-white">Signup</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form [formGroup]="signupForm">
+                    <div class="form-group">
+                        <input type="text" formControlName="firstName" class="form-control" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" formControlName="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div *ngIf="signupForm.controls['email'].invalid &&
+                    (signupForm.controls['email'].dirty || 
+                    signupForm.controls['email'].touched)">
+                        <div *ngIf="signupForm.controls['email'].errors.email" style="color: red;">
+                            Invalid email format
+                        </div>
+                        <div *ngIf="signupForm.controls['email'].errors.required" style="color: red;">
+                            Email is required
+                        </div>
+                    </div>
+                    <div style="color: red;">
+                        {{msg}}
+                        <!-- <span id="msgError"></span> -->
+                    </div>
+                    <div class="form-group">
+                        <input type="password" formControlName="pwd" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" formControlName="confirmPwd" class="form-control"
+                            placeholder="Confirm Password">
+                    </div>
+                    <div *ngIf="signupForm.controls['confirmPwd'].invalid &&
+                        (signupForm.controls['confirmPwd'].dirty || 
+                        signupForm.controls['confirmPwd'].touched)">
+                        <div *ngIf="signupForm.controls['confirmPwd'].errors.mustMatch" style="color: red;">
+                        
+                        Confirm Pwd must match PWD
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" (click)="signup(signupForm.value)"
+                            class="btn btn-primary py-3 px-5">Signup </button>
+                    </div>
+                </form>
+
+                {{signupForm.value | json}}
+                {{signupForm.status | json}}
+            </div>
+        </div>
+    </div>
+</div>
